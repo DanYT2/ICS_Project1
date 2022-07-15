@@ -25,12 +25,17 @@
       </div>
     </div>
   </div>
+  @if(Session::has('message'))
+    <div class="alert alert-success">
+      {{ Session::get('$message') }}
+    </div>
+  @endif
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <div class="card-body">
-            <form action="{{ route('doctor.store') }}" class="forms-sample" method="post">
+            <form action="{{ route('doctor.store') }}" class="forms-sample" method="post" enctype="multipart/form-data">
               @csrf
               <h3 class="p-4 justify-content-center">Add Doctor</h3>
               <div class="row">
@@ -97,8 +102,13 @@
               <div class="row">
                 <div class="col-md-6 mt-3">
                   <div class="form-group">
-                    <label for="">Specialist</label>
-                    <input type="text" name="department" class="form-control @error('specialist') is-invalid @enderror">
+                    <label for="">Department</label>
+                    <input type="text" name="department" class="form-control @error('department') is-invalid @enderror">
+                    @error('department')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-md-6 mt-3">
@@ -119,12 +129,12 @@
                   <label class="ml-10">Image</label>
                   <input type="file" name="profile_photo_path" class="file-upload-default">
                   <div class="input-group col-xs-12">
-                    <input type="file" class="form-control file-upload-info @error('image') is-invalid @enderror" placeholder="Upload Image"
+                    <input type="file" class="form-control file-upload-info @error('profile_photo_path') is-invalid @enderror" placeholder="Upload Image"
                            name="profile_photo_path">
                     <span class="input-group-append">
                                                     {{--<button class="file-upload-browse btn btn-primary" type="button">Select Photo</button>--}}
                                                     </span>
-                    @error('image')
+                    @error('profile_photo_path')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                     </span>
