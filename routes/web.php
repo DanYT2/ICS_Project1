@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+  use App\Http\Controllers\DoctorController;
+  use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/', function () {
   Route::get('/test', function (){
     return view('test');
   });
+
+  Route::get('/doctor/create', [DoctorController::class, 'create']);
 
 Route::middleware([
     'auth:sanctum',
