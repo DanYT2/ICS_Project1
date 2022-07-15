@@ -31,7 +31,7 @@ class User extends Authenticatable
         'address',
         'phone_number',
         'department',
-        'image',
+        'profile_photo_path',
         'education',
         'description',
         'gender'

@@ -15,11 +15,12 @@
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function index ()
     {
-      //
+      $users = User::get();
+      return view('admin.doctor.index', compact('users'));
     }
 
     /**
