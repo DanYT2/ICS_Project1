@@ -28,6 +28,22 @@
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+          <div class="mt-4">
+            <x-jet-label for="gender" value="{{ __('Gender') }}" />
+{{--            <x-jet-dropdown id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />--}}
+            <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            @error('gender')
+              <span class="invalid-feedback" role="alert">
+                <strong>
+                  {{ $message }}
+                </strong>
+              </span>
+            @enderror
+
+          </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
