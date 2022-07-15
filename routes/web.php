@@ -24,7 +24,9 @@ Route::get('/', function () {
     return view('test');
   });
 
-  Route::get('/doctor/create', [DoctorController::class, 'create']);
+//  Route::get('/doctor/create', [DoctorController::class, 'create']);
+
+  Route::resource('doctor', 'App\Http\Controllers\DoctorController');
 
 Route::middleware([
     'auth:sanctum',
