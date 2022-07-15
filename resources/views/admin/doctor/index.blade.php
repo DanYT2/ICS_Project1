@@ -61,12 +61,14 @@
                   <th>{{ $user->department }}</th>
                   <td>
                     <div class="table-actions">
-                      <a  href="#"><i class="ik ik-eye" ></i></a>
+{{--                      <a  href="#" data-toggle="modal" data-target="exampleModal{{ $user->id }}"><i class="ik ik-eye" ></i></a>--}}
+                      <a href="#" data-toggle="modal" data-target="#exampleModal"><a href="#" data-toggle="modal" data-target="#exampleModal{{ $user->id }}"><i class="ik ik-eye"></i></a></a>
                       <a href="#"><i class="ik ik-edit-2"></i></a>
                       <a href="#"><i class="ik ik-trash-2"></i></a>
                     </div>
                   </td>
                 </tr>
+                @include('admin.doctor.modal')
               @endforeach
             @else
               <td>No users to display</td>
