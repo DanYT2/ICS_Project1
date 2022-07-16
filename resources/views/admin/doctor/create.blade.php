@@ -5,6 +5,11 @@
     <div class="row align-items-end">
       <div class="col-lg-8">
         <div class="page-header-title">
+          @if(Session::has('message'))
+            <div class="alert bg-success alert-success text-white">
+              {{ Session::get('$message') }}
+            </div>
+          @endif
           <i class="ik ik-edit bg-blue"></i>
           <div class="d-inline">
             <h5>Doctors</h5>
@@ -25,11 +30,7 @@
       </div>
     </div>
   </div>
-  @if(Session::has('message'))
-    <div class="alert alert-success">
-      {{ Session::get('$message') }}
-    </div>
-  @endif
+
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <div class="card">

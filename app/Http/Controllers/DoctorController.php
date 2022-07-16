@@ -64,7 +64,7 @@
       ];
 
       User::create($data);
-      return redirect()->back()->with('message', 'Doctor added successfully');
+      return redirect()->route('doctor.index')->with('message', 'Doctor added successfully');
 
     }
 
@@ -96,11 +96,36 @@
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update ( Request $request, $id )
     {
-      //
+      $this->validateUpdate($request, $id);
+      $data = $request->all();
+      $user = User::find($id);
+      $imageName = $user->profile_photo_path;
+      $userPassword = $user->password;
+
+      if ($request->hasFile('profile_photo_path'))
+      {
+        $image = $request->file('profile_photo_path');
+        $name = $image->hashName();
+        $destination = public_path('/images/profile_photos');
+        $image->move($destination, $imageName);
+      }
+      $data['image'] = $imageName;
+
+      if ($request->password)
+      {
+        $data['password'] = bcrypt($request->password);
+      }
+      else
+      {
+        $data['password'] = $userPassword;
+      }
+      $user->update($data);
+      return redirect()->route('doctor.index')->with('message', 'Doctor Updated successfully');
+
     }
 
     /**
@@ -126,6 +151,21 @@
         'department'         => 'required',
         'phone_number'       => 'required|numeric',
         'profile_photo_path' => 'required|mimes:jpeg,png,jpg',
+        'role_id'            => 'required',
+        'description'        => 'required',
+      ]);
+    }
+    public function validateUpdate (Request $request, $id )
+    {
+      return $this->validate($request, [
+        'name'               => 'required',
+        'email'              => 'required|unique:users,email,'.$id,
+        'gender'             => 'required',
+        'education'          => 'required',
+        'address'            => 'required',
+        'department'         => 'required',
+        'phone_number'       => 'required|numeric',
+        'profile_photo_path' => 'mimes:jpeg,png,jpg',
         'role_id'            => 'required',
         'description'        => 'required',
       ]);
