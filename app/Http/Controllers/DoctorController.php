@@ -8,6 +8,7 @@
   use Illuminate\Contracts\View\View;
   use Illuminate\Http\Request;
   use Illuminate\Http\Response;
+  use Illuminate\Support\Facades\Auth;
 
   class DoctorController extends Controller
   {
@@ -19,6 +20,7 @@
      */
     public function index ()
     {
+      dd(Auth::user()->role()->name);
       $users = User::where('role_id', '!=', 3)->get();
       return view('admin.doctor.index', compact('users'));
     }

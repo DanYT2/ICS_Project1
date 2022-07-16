@@ -23,6 +23,8 @@
         $table->foreignId('current_team_id')->nullable();
         $table->string('profile_photo_path', 2048)->nullable();
         $table->integer('role_id')->default(3);
+//        $table->foreignIdFor(Role::class, '');
+//        $table->foreignId('role_id')->default(3)->references('id')->on('roles')->cascadeOnUpdate()->cascadeOnDelete();
         $table->string('address')->nullable();
         $table->string('phone_number')->nullable();
         $table->string('department')->nullable();

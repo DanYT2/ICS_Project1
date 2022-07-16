@@ -25,15 +25,25 @@ Route::get('/', function () {
   });
 
 //  Route::get('/doctor/create', [DoctorController::class, 'create']);
-
-  Route::resource('doctor', 'App\Http\Controllers\DoctorController');
-
-Route::middleware([
+/*  Route::group([
+  'middleware' => [
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'admin'
+  ]
+], function (){
+    Route::resource('doctor', 'App\Http\Controllers\DoctorController');
+  });*/
+
+  Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'admin'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+    Route::resource('doctor', 'App\Http\Controllers\DoctorController');
+  });
