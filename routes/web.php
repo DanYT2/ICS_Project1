@@ -51,3 +51,4 @@ Route::get('/', function () {
 
   Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
   Route::post('/appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
+  Route::post('/appointment/update', [AppointmentController::class, 'updateTime'])->name('appointment.update');

@@ -33,9 +33,14 @@
   <div class="container">
     @if(Session::has('message'))
       <div class="alert bg-success alert-success text-white">
-        {{ Session::get('$message') }}
+        {{ Session::get('message') }}
       </div>
     @endif
+      @if(Session::has('errmessage'))
+        <div class="alert bg-danger alert-success text-white">
+          {{ Session::get('errmessage') }}
+        </div>
+      @endif
     @foreach($errors->all() as $error)
       <div class="alert alert-danger">
         {{ $error }}
@@ -59,6 +64,9 @@
         </div>
       </div>
     </form>
+      @if(Route::is('appointment.check'))
+        <form action="{{ route('appointment.update') }}" method="post">
+          @csrf
       <div class="card">
         <div class="card-header">
           Choose AM time
@@ -72,6 +80,7 @@
 
 
             <tbody>
+            <input type="hidden" name="appointmentID" value="{{ $appointmentID }}">
             <tr>
               <th scope="row">1</th>
               <td><input type="checkbox" name="time[]"  value="6am" @if(isset($times)){{ $times->contains('time', '6am') ? 'checked': ''}} @endif>6am</td>
@@ -201,9 +210,10 @@
         </div>
       </div>
 
-
+        </form>
   </div>
 
+      @endif
   <style type="text/css">
     input[type="checkbox"]{
       zoom:1.5;
