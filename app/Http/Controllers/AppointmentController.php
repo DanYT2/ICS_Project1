@@ -15,11 +15,11 @@
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index ()
     {
-      //
+      return view('admin.appointment.index');
     }
 
     /**
@@ -104,5 +104,20 @@
     public function destroy ( $id )
     {
       //
+    }
+
+    public function check ( Request $request )
+    {
+      $date = $request->date;
+      $appointment = Appointment::where('date', $date)->where('user_id', \auth()->user()->id)->first();
+
+      if(!$appointment)
+      {
+        return redirect()->to('/appointment')->with('errmessage', 'Appointment time not available for this date');
+      }
+      $appointmentID = $appointment->id;
+      $times = Time::where('appointment_id', $appointmentID)->get();
+//      return $times;
+      return view('admin.appointment.index', compact('times', 'appointmentID', 'date'));
     }
   }
