@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-lg-6 mt-3">
                   <label for="email">Email</label>
-                  <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" value="{{ old('email') }}>
+                  <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" value="{{ old('email') }}">
                   @error('email')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -82,7 +82,7 @@
               <div class="row">
                 <div class="col-lg-6 mt-3">
                   <label for="education">Level of education</label>
-                  <input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="Highest degree" value="{{ old('education') }}>
+                  <input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="Highest degree" value="{{ old('education') }}">
                   @error('education')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-lg-6 mt-3">
                   <label for="address">Address</label>
-                  <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{ old('address') }}>
+                  <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{ old('address') }}">
                   @error('address')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                 <div class="col-md-6 mt-3">
                   <div class="form-group">
                     <label for="">Department</label>
-                    <input type="text" name="department" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}>
+                    <input type="text" name="department" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}">
                     @error('department')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -115,7 +115,7 @@
                 <div class="col-md-6 mt-3">
                   <div class="form-group">
                     <label for="">Phone number</label>
-                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}>
+                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
                     @error('phone_number')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -143,7 +143,7 @@
                   </div>
                   <div class="col-md-6">
                     <label for="role">Role</label>
-                    <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" value="{{ old('role') }}>
+                    <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" value="{{ old('role') }}">
 
                       @foreach(App\Models\Role::get() as $role)
                         <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -161,7 +161,7 @@
 
               <div class="form-group">
                 <label for="exampleTextarea1">About</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="4" name="description" value="{{ old('description') }}></textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="4" name="description" value="{{ old('description') }}"></textarea>
                 @error('description')
                 <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>

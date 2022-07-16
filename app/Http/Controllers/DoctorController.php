@@ -72,11 +72,12 @@
      * Display the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show ( $id )
     {
-      //
+      $user = User::find($id);
+      return view('admin.doctor.delete', compact('user'));
     }
 
     /**
@@ -132,11 +133,22 @@
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy ( $id )
     {
-      //
+      if (auth()->user()->id == $id)
+      {
+        abort(401);
+      }
+      $user = User::find($id);
+      $userDelete = $user->delete();
+      if ($userDelete)
+      {
+        unlink(public_path('images/profile_photos/'.$user->profile_photo_path));
+      }
+      return redirect()->route('doctor.index')->with('message', 'Doctor deleted successfully');
+
     }
 
     public function validateStore (Request $request )
