@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class Doctor
 {
-//  TODO: Ensure middleware is functional Video number 27
+//  TODO: Ensure middleware is functional Video number 27 and 37
     /**
      * Handle an incoming request.
      *
@@ -17,6 +17,13 @@ class Doctor
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (\Illuminate\Support\Facades\Auth::user()->role_id == 1)
+        {
+          return $next($request);
+        }
+        else
+        {
+          return redirect()->back();
+        }
     }
 }
