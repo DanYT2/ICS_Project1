@@ -19,7 +19,8 @@
      */
     public function index ()
     {
-      return view('admin.appointment.index');
+      $myAppointments = Appointment::latest()->where('user_id', \auth()->user()->id)->get();
+      return view('admin.appointment.index', compact('myAppointments'));
     }
 
     /**

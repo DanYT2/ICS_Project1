@@ -212,7 +212,37 @@
 
         </form>
   </div>
+  @else
+    <h3>Appointment List: {{ $myAppointments->count() }}</h3>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Creator</th>
+          <th scope="col">Date</th>
+          <th scope="col">View/Update</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach($myAppointments as $appointment)
+        <tr>
+          <th></th>
+          <th>{{ $appointment->doctor->name }}</th>
+          <th>{{ $appointment->date }}</th>
+          <th>
+            <form action="{{ route('appointment.check') }}" method="post">
+              @csrf
+              <input type="hidden" name="date" value="{{ $appointment->date }}">
+              <button type="submit" class="btn btn-primary">View or Update</button>
+            </form>
+          </th>
+        </tr>
+      @endforeach
+      </tbody>
+      <tbody>
 
+      </tbody>
+    </table>
       @endif
   <style type="text/css">
     input[type="checkbox"]{
