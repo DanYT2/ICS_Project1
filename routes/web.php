@@ -1,5 +1,6 @@
 <?php
 
+  use App\Http\Controllers\AppointmentController;
   use App\Http\Controllers\DoctorController;
   use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,5 @@ Route::get('/', function () {
     })->name('dashboard');
     Route::resource('doctor', 'App\Http\Controllers\DoctorController');
   });
+
+  Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
