@@ -8,6 +8,7 @@
   use Illuminate\Contracts\View\Factory;
   use Illuminate\Contracts\View\View;
   use Illuminate\Http\Request;
+  use Illuminate\Support\Facades\Auth;
 
   class AppointmentController extends Controller
   {
@@ -39,6 +40,10 @@
      */
     public function store ( Request $request )
     {
+      $this->validate($request, [
+        'date' => 'required|unique:appointments,date,NULL,id,user_id,'.Auth::id(),
+        'time' => 'required',
+      ]);
       $appointment = Appointment::create([
         'user_id' => auth()->user()->id,
         'date' => $request->date
