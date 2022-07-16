@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+  namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+  use App\Models\Appointment;
+  use App\Models\Time;
+  use Illuminate\Contracts\Foundation\Application;
+  use Illuminate\Contracts\View\Factory;
+  use Illuminate\Contracts\View\View;
+  use Illuminate\Http\Request;
 
-class AppointmentController extends Controller
-{
+  class AppointmentController extends Controller
+  {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
-        //
+      //
     }
 
     /**
@@ -24,7 +26,7 @@ class AppointmentController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create ()
     {
       return view('admin.appointment.create');
     }
@@ -32,56 +34,70 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store ( Request $request )
     {
-        //
+      $appointment = Appointment::create([
+        'user_id' => auth()->user()->id,
+        'date' => $request->date
+      ]);
+
+      foreach ($request->time as $time)
+      {
+        Time::create([
+          'appointment_id' => $appointment->id,
+          'time' => $time,
+//          'status'
+        ]);
+      }
+
+      return redirect()->back()->with('message', 'Appointment successfully created on'.$request->date);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show ( $id )
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit ( $id )
     {
-        //
+      //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update ( Request $request, $id )
     {
-        //
+      //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy ( $id )
     {
-        //
+      //
     }
-}
+  }

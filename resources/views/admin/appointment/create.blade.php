@@ -31,7 +31,13 @@
   </div>
 
   <div class="container">
-
+    @if(Session::has('message'))
+      <div class="alert bg-success alert-success text-white">
+        {{ Session::get('$message') }}
+      </div>
+    @endif
+    <form action="{{ route('appointment.store') }}" method="post">
+      @csrf
     <div class="card">
       <div class="card-header">
         Choose date
@@ -182,6 +188,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
+    </form>
 
 
   </div>
