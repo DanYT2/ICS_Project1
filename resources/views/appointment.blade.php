@@ -27,10 +27,14 @@
                 @foreach($times as $time)
                 <div class="col-md-3">
                   <label for="" class="btn btn-outline-primary justify-center">
-                    <input type="radio" name="status" value="1">
+                    <input type="radio" name="time" value="{{ $time->time }}">
                     <span>{{ $time->time }}</span>
                   </label>
                 </div>
+                  <input type="hidden" name="doctorID" value="{{ $doctor_id }}">
+                  <input type="hidden" name="appointmentID" value="{{ $time->appointment_id }}}">
+
+
                 @endforeach
               </div>
             </div>
