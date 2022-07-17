@@ -1,6 +1,7 @@
 <?php
 
   use App\Http\Controllers\AppointmentController;
+  use App\Http\Controllers\DashboardController;
   use App\Http\Controllers\DoctorController;
   use App\Http\Controllers\FrontendController;
   use Illuminate\Support\Facades\Route;
@@ -23,9 +24,11 @@ Route::get('/', [FrontendController::class, 'index']);
 Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'show'])->name('create.appointment');
 
 
-  Route::get('/dashboards', function (){
+/*  Route::get('/dashboards', function (){
     return view('dashboards');
-  });
+  });*/
+
+  Route::get('/dashboards', [DashboardController::class, 'index']);
   Route::get('/test', function (){
     return view('test');
   });
