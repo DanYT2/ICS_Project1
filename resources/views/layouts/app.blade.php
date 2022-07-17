@@ -43,9 +43,12 @@
         </div>
         <script>
           $( function() {
-            $( "#datepicker" ).datepicker();
+            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
           } );
         </script>
+        <style>
+
+        </style>
         @stack('modals')
 
         @livewireScripts
