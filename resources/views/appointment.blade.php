@@ -18,7 +18,17 @@
         </div>
       </div>
       <div class="col-md-9">
-        <form action="" method="post">
+        @foreach($errors->all() as $error)
+          <div class="alert alert-danger">
+            {{ $error }}
+          </div>
+        @endforeach
+        @if(Session::has('message'))
+          <div class="alert alert-success">
+            {{ Session::get('message') }}
+          </div>
+        @endif
+        <form action="{{ route('booking.appointment') }}" method="post">
           @csrf
           <div class="card">
             <div class="card-header lead">{{ $date }}</div>
@@ -33,6 +43,7 @@
                 </div>
                   <input type="hidden" name="doctorID" value="{{ $doctor_id }}">
                   <input type="hidden" name="appointmentID" value="{{ $time->appointment_id }}}">
+                  <input type="hidden" name="date" value="{{ $date }}">
 
 
                 @endforeach

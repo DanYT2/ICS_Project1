@@ -32,7 +32,7 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
   Route::get('/test', function (){
     return view('test');
   });
-  Route::post('/book/appointment', [FrontendController::class, 'store'])->name('book.appointment');
+  Route::post('/book/appointment', [FrontendController::class, 'store'])->name('booking.appointment');
 
 //  Route::get('/doctor/create', [DoctorController::class, 'create']);
 /*  Route::group([
