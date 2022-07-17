@@ -23,11 +23,16 @@
             {{ $error }}
           </div>
         @endforeach
-        @if(Session::has('message'))
-          <div class="alert alert-success">
-            {{ Session::get('message') }}
-          </div>
-        @endif
+          @if(Session::has('message'))
+            <div class="alert alert-success">
+              {{ Session::get('message') }}
+            </div>
+          @endif
+          @if(Session::has('errmessage'))
+            <div class="alert alert-danger">
+              {{ Session::get('errmessage') }}
+            </div>
+          @endif
         <form action="{{ route('booking.appointment') }}" method="post">
           @csrf
           <div class="card">
