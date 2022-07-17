@@ -20,6 +20,7 @@
     return view('home');
 });*/
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'show'])->name('create.appointment');
 
 
   Route::get('/dashboards', function (){
