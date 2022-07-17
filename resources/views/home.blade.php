@@ -17,8 +17,8 @@
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
         <div class="mt-5">
-          <button class="btn btn-success">Register</button>
-          <button class="btn btn-secondary">Login</button>
+          <a href="{{ url('/register') }}"><button class="btn btn-success">Register</button></a>
+          <a href="{{ url('/login') }}"><button class="btn btn-secondary">Login</button></a>
         </div>
       </div>
 
@@ -56,30 +56,22 @@
             </tr>
             </thead>
             <tbody>
-
+            @forelse($doctors as $doctor)
             <tr>
               <th scope="row">1</th>
-              <td><img src="/doctor/doctor.png" width="80" style="border-radius: 50%;">
+              <td><img src="{{ asset('images/profile_photos') }}/{{ $doctor->doctor->profile_photo_path }}" width="80" style="border-radius: 50%;">
               </td>
-              <td>Name of doctor</td>
-              <td>Specialty</td>
+              <td>{{ $doctor->doctor->name }}</td>
+              <td>{{ $doctor->doctor->department }}</td>
               <td>
                 <button class="btn btn-success">Book Appointment</button>
               </td>
             </tr>
-
-            <tr>
-              <th scope="row">1</th>
-              <td><img src="/doctor/doctor.png" width="80" style="border-radius: 50%;">
-              </td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+            @empty
               <td>
-                <button class="btn btn-success">Book Appointment</button>
+                No doctor available today
               </td>
-            </tr>
-
-
+            @endforelse
             </tbody>
           </table>
 

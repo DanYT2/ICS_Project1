@@ -2,6 +2,7 @@
 
   use App\Http\Controllers\AppointmentController;
   use App\Http\Controllers\DoctorController;
+  use App\Http\Controllers\FrontendController;
   use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-});
+});*/
+Route::get('/', [FrontendController::class, 'index']);
+
+
   Route::get('/dashboards', function (){
     return view('dashboards');
   });
