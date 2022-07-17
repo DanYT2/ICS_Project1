@@ -36,7 +36,13 @@
             </div>
           </div>
           <div class="card-footer">
-            <button type="submit" class="btn btn-success" style="width: 100%">Book Appointment</button>
+            @if(Auth::check())
+              <button type="submit" class="btn btn-success" style="width: 100%">Book Appointment</button>
+            @else
+              <p>Login to make an appointment</p>
+              <button class="btn btn-primary"><a href="/register">Register</a></button>
+              bu<a href="{{ route('login') }}">Login</a>
+            @endif
           </div>
         </form>
       </div>
