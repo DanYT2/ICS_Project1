@@ -42,8 +42,14 @@
             </main>
         </div>
         <script>
+          let dateToday = new Date();
           $( function() {
-            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+            $('#datepicker').datepicker({
+              dateFormat: 'yy-mm-dd',
+              showButtonPanel: true,
+              numberOfMonths: 1,
+              minDate: dateToday,
+            })
           } );
         </script>
         <style>

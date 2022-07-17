@@ -25,22 +25,21 @@
     </div>
     <hr>
     <section class="">
-      <div class="card">
-        <div class="card-header">Find Doctors</div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-8">
-              <input type="text" class="form-control " id="datepicker"  name="date">
+      <form action="{{ url('/') }}" method="GET">
+        <div class="card">
+          <div class="card-header">Find Doctors</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control " id="datepicker"  name="date">
+              </div>
+              <div class="col-sm-4">
+                <button class="btn btn-primary">Find doctors</button>
+              </div>
             </div>
-            <div class="col-sm-4">
-              <button class="btn btn-primary">Find doctors</button>
-            </div>
-
           </div>
         </div>
-
-      </div>
-
+      </form>
       <div class="card mt-1">
         <div class="card-header"> Doctors available today</div>
         <div class="card-body">

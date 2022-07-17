@@ -12,6 +12,13 @@ class FrontendController extends Controller
   public function index (  )
   {
     $doctors = Appointment::where('date', date('Y-m-d'))->get();
+    if(request('date'))
+    {
+      $doctors = $this->findDoctorsBasedOnDate(\request('date'));
+      return view('home', compact('doctors'));
+
+    }
+
     return view('home', compact('doctors'));
   }
 
@@ -24,5 +31,11 @@ class FrontendController extends Controller
     $user = User::where('id', $doctorID)->first();
 
     return view('appointment', compact('times', 'date', 'user'));
+  }
+
+  public function findDoctorsBasedOnDate ( $date )
+  {
+    $doctors = Appointment::where('date', $date)->get();
+    return $doctors;
   }
 }
