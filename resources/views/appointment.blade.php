@@ -11,6 +11,7 @@
             <br>
             <hr>
             <p>Name:</p>
+            <p>Degree:</p>
             <p>Expertise:</p>
           </div>
         </div>
