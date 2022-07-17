@@ -10,8 +10,12 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+      <link rel="stylesheet" href="{{ asset('../template/dist/css/theme.min.css') }}">
+      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" defer></script>
 
-        <!-- Styles -->
+      <!-- Styles -->
         @livewireStyles
 
         <!-- Scripts -->
@@ -37,7 +41,11 @@
                 @yield('content')
             </main>
         </div>
-
+        <script>
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
+        </script>
         @stack('modals')
 
         @livewireScripts
