@@ -45,9 +45,9 @@
                   <td>{{ $booking->doctor->name }}</td>
                   <td>
                     @if($booking->status == 0)
-                      <button class="btn btn-primary">Pending</button>
+                      <a href="{{ route('update.status', [$booking->id]) }}"><button class="btn btn-primary">Pending</button></a>
                     @else
-                      <button class="btn btn-success">Appointment attended</button>
+                      <a href="{{ route('update.status', [$booking->id]) }}"><button class="btn btn-success">Appointment attended</button></a>
                     @endif
                   </td>
                 </tr>
