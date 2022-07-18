@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+  namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+  use App\Models\Booking;
+  use Illuminate\Http\Request;
 
-class PrescriptionController extends Controller
-{
-    //
-}
+  class PrescriptionController extends Controller
+  {
+    public function index ()
+    {
+      $bookings = Booking::where('date', date('Y-m-d'))->where('status');
+      return view('prescription.index', compact('bookings'));
+    }
+  }

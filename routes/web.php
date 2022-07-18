@@ -5,6 +5,7 @@
   use App\Http\Controllers\DoctorController;
   use App\Http\Controllers\FrontendController;
   use App\Http\Controllers\PatientlistController;
+  use App\Http\Controllers\PrescriptionController;
   use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,7 +75,9 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
     Route::post('/appointment/update', [AppointmentController::class, 'updateTime'])->name('appointment.update');
 
   });*/
-
+/* Needs to be placed under doctor middleware*/
   Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
   Route::post('/appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
   Route::post('/appointment/update', [AppointmentController::class, 'updateTime'])->name('appointment.update');
+  Route::get('patient-today', [PrescriptionController::class, 'index']);
+/*End of doctor middleware*/
