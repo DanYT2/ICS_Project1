@@ -2,6 +2,7 @@
 
   namespace App\Http\Controllers;
 
+  use App\Mail\AppointmentMail;
   use App\Models\Appointment;
   use App\Models\Booking;
   use App\Models\Time;
@@ -61,7 +62,21 @@
       Time::where('appointment_id', $request->appointmentID)
           ->where('time', $request->time)
           ->update([ 'status' => 1 ]);
-      
+
+      /*Sending email notification*/
+      $doctorName = User::where('id', $request->doctorID)->first();
+      $mailData = [
+        'name' => auth()->user()->name,
+        'time' => $request->time,
+        'date' => $request->date,
+        'doctorName' => $doctorName->name,
+      ];
+      try {
+        \Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+      }catch (\Exception $e){
+
+      }
+
       return redirect()->back()->with('message', 'Appointment booked successfully');
     }
 
