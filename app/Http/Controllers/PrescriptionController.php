@@ -30,4 +30,11 @@
       $prescription = Prescription::where('user_id', $userID)->where('date', $date)->first();
       return view('prescription.show', compact('prescription'));
     }
+
+    /*Get all patients from prescription table*/
+    public function patientsFromPrescription ()
+    {
+      $patients = Prescription::get();
+      return view('prescription.all', compact('patients'));
+    }
   }
