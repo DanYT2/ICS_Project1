@@ -59,6 +59,7 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
     })->name('dashboard');
     Route::resource('doctor', 'App\Http\Controllers\DoctorController');
     Route::get('/patients', [PatientlistController::class, 'index'])->name('patient');
+    Route::get('/patients/all', [PatientlistController::class, 'allTimeAppointment'])->name('all.appointments');
     Route::get('/status/update/{id}', [PatientlistController::class, 'toggleStatus'])->name('update.status');
   });
 
