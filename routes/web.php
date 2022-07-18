@@ -4,6 +4,7 @@
   use App\Http\Controllers\DashboardController;
   use App\Http\Controllers\DoctorController;
   use App\Http\Controllers\FrontendController;
+  use App\Http\Controllers\PatientlistController;
   use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +58,7 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
         return view('dashboard');
     })->name('dashboard');
     Route::resource('doctor', 'App\Http\Controllers\DoctorController');
+    Route::get('/patients', [PatientlistController::class, 'index']);
   });
 
 /*  Route::middleware([
