@@ -80,4 +80,5 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
   Route::post('/appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
   Route::post('/appointment/update', [AppointmentController::class, 'updateTime'])->name('appointment.update');
   Route::get('patient-today', [PrescriptionController::class, 'index']);
+  Route::post('/prescription', [PrescriptionController::class, 'store'])->name('prescription');
 /*End of doctor middleware*/

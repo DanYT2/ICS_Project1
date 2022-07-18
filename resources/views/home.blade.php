@@ -73,7 +73,9 @@
             @endforelse
             </tbody>
           </table>
+<add-btn>
 
+</add-btn>
 
         </div>
 
