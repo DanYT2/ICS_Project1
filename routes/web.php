@@ -58,7 +58,7 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
         return view('dashboard');
     })->name('dashboard');
     Route::resource('doctor', 'App\Http\Controllers\DoctorController');
-    Route::get('/patients', [PatientlistController::class, 'index']);
+    Route::get('/patients', [PatientlistController::class, 'index'])->name('patient');
   });
 
 /*  Route::middleware([
