@@ -1,13 +1,19 @@
 <?php
 
-namespace App\Models;
+  namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Factories\HasFactory;
+  use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Booking extends Model
-{
+  class Booking extends Model
+  {
     use HasFactory;
 
     protected $guarded = [];
-}
+
+    public function doctor (): BelongsTo
+    {
+      return $this->belongsTo(User::class);
+    }
+  }
