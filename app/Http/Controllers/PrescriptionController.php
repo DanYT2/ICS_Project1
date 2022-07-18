@@ -9,7 +9,7 @@
   {
     public function index ()
     {
-      $bookings = Booking::where('date', date('Y-m-d'))->where('status');
+      $bookings = Booking::where('date', date('Y-m-d'))->where('status', 1);
       return view('prescription.index', compact('bookings'));
     }
   }
