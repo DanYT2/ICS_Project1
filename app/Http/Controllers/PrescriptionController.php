@@ -10,7 +10,10 @@
   {
     public function index ()
     {
-      $bookings = Booking::where('date', date('Y-m-d'))->where('status', 1)->get();
+      $bookings = Booking::where('date', date('Y-m-d'))
+                         ->where('status', 1)
+                         ->where('doctor_id', auth()->user()->id)
+                         ->get();
       return view('prescription.index', compact('bookings'));
     }
 
