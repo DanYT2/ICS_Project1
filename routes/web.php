@@ -79,6 +79,7 @@ Route::get('/new-appointment/{doctorID}/{date}', [FrontendController::class, 'sh
   Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
   Route::post('/appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
   Route::post('/appointment/update', [AppointmentController::class, 'updateTime'])->name('appointment.update');
-  Route::get('patient-today', [PrescriptionController::class, 'index']);
+  Route::get('patient-today', [PrescriptionController::class, 'index'])->name('patients.today');
   Route::post('/prescription', [PrescriptionController::class, 'store'])->name('prescription');
+  Route::get('/prescription/{userID}/{date}', [PrescriptionController::class, 'show'])->name('prescription.show');
 /*End of doctor middleware*/

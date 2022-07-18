@@ -49,7 +49,7 @@
                        </button>
                        @include('prescription.form')
                        @else
-                       View
+                         <a href="{{ route('prescription.show', [$booking->user_id, $booking->date]) }}" class="btn btn-secondary">View prescription</a>
                        @endif
                      </td>
                 </tr>

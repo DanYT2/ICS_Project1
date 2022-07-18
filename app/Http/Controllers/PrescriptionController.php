@@ -24,4 +24,10 @@
 
       return redirect()->back()->with('message', 'Prescription created');
     }
+
+    public function show ($userID, $date)
+    {
+      $prescription = Prescription::where('user_id', $userID)->where('date', $date)->first();
+      return view('prescription.show', compact('prescription'));
+    }
   }
